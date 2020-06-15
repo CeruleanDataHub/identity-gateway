@@ -216,12 +216,12 @@ const unixServer = net.createServer(socket => {
     ) {
       const telemetryData = {
         address: telemetry.device.address,
-        rssi: telemetry.rssi,
-        temperature: telemetry.sensors.temperature,
-        humidity: telemetry.sensors.humidity,
-        pressure: telemetry.sensors.pressure,
-        voltage: telemetry.sensors.voltage,
-        tx_power: telemetry.sensors.txpower,
+        rssi: telemetry.rssi || 0,
+        temperature: telemetry.sensors.temperature || -999,
+        humidity: telemetry.sensors.humidity || -999,
+        pressure: telemetry.sensors.pressure || -999,
+        voltage: telemetry.sensors.voltage || 0,
+        tx_power: telemetry.sensors.txpower || 0,
         time: new Date().toISOString()
       };
 
