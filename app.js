@@ -171,6 +171,7 @@ const unixServer = net.createServer(socket => {
     } catch (ex) {
       return;
     }
+    console.log('telemetry, devices', telemetry, devices);
 
     const alreadyDiscoveredDevice = devices.find(
       d => d.address === telemetry.device.address
