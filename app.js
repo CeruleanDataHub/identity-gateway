@@ -260,6 +260,10 @@ setInterval(() => {
 }, 2000);
 
 const createUnixServer = () => {
-  fs.unlinkSync(process.env.SOCKET_PATH);
+  try {
+    fs.unlinkSync(process.env.SOCKET_PATH);
+  } catch (e) {
+    console.log(e);
+  }
   unixServer.listen(process.env.SOCKET_PATH);
 };
