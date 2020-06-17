@@ -226,6 +226,7 @@ const unixServer = net.createServer(socket => {
         tx_power: telemetry.sensors.txpower || 0,
         time: new Date().toISOString()
       };
+      console.log('telemetryData', JSON.stringify(telemetryData));
 
       const msg = new Message(JSON.stringify(telemetryData));
 
@@ -237,13 +238,14 @@ const unixServer = net.createServer(socket => {
           alreadyDiscoveredDevice.deviceTwin
         )
       );
-      //console.log("Send msg", JSON.stringify(msg));
+      console.log('Send msg', JSON.stringify(msg));
       moduleClient.sendEvent(msg, printResultFor('send'));
     }
   });
 });
 
 const sendRegistrationRequest = deviceRegistrationObj => {
+  console.log('sendRegistrationRequest', JSON.stringify(deviceRegistrationObj));
   const data = JSON.stringify(deviceRegistrationObj);
   const msg = new Message(data);
   msg.properties.add('type', 'device-registration');
