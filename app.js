@@ -17,8 +17,10 @@ const iotHub = process.env.IOT_HUB;
 
 const devices = [];
 
-const MODULE_NAME = 'RuuviTagGateway';
+const MODULE_NAME = 'IdentityGateway';
 const DEVICE_REGISTRATION_METHOD_NAME = 'DeviceRegistrationAttempted';
+
+console.log('currentEdgeDeviceId', currentEdgeDeviceId);
 
 const printResultFor = op => {
   return (err, res) => {
