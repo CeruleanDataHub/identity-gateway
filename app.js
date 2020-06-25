@@ -217,16 +217,36 @@ const unixServer = net.createServer(socket => {
       alreadyDiscoveredDevice &&
       alreadyDiscoveredDevice.edgeDeviceId === currentEdgeDeviceId
     ) {
+
       const telemetryData = {
+        time: new Date().toISOString(),
         address: telemetry.device.address,
-        rssi: telemetry.rssi || 0,
-        temperature: telemetry.sensors.temperature || -999,
-        humidity: telemetry.sensors.humidity || -999,
-        pressure: telemetry.sensors.pressure || -999,
-        voltage: telemetry.sensors.voltage || 0,
-        tx_power: telemetry.sensors.txpower || 0,
-        time: new Date().toISOString()
-      };
+      }
+
+      if (telemetry.sensors.temperature) {
+        telemetryData.temperature = telemetry.sensors.temperature;
+      }
+
+      if (telemetry.sensors.humidity) {
+        telemetryData.humidity = telemetry.sensors.humidity;
+      }
+
+      if (telemetry.sensors.pressure) {
+        telemetryData.pressure = telemetry.sensors.pressure;
+      }
+
+      if (telemetry.sensors.txpower) {
+        telemetryData.txpower = telemetry.sensors.txpower;
+      }
+
+      if (telemetry.sensors.rssi) {
+        telemetryData.rssi = telemetry.sensors.rssi;
+      }
+
+      if (telemetry.sensors.voltage) {
+        telemetryData.voltage = telemetry.sensors.voltage;
+      }
+
       console.log('telemetryData', JSON.stringify(telemetryData));
 
       const msg = new Message(JSON.stringify(telemetryData));
