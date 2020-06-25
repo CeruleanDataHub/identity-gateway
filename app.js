@@ -239,8 +239,8 @@ const unixServer = net.createServer(socket => {
         telemetryData.txpower = telemetry.sensors.txpower;
       }
 
-      if (telemetry.sensors.rssi) {
-        telemetryData.rssi = telemetry.sensors.rssi;
+      if (telemetry.rssi) {
+        telemetryData.rssi = telemetry.rssi;
       }
 
       if (telemetry.sensors.voltage) {
