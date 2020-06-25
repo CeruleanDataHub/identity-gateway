@@ -171,7 +171,7 @@ const unixServer = net.createServer(socket => {
     } catch (ex) {
       return;
     }
-    console.log('telemetry, devices', telemetry, devices);
+    //console.log('telemetry, devices', telemetry, devices);
 
     const alreadyDiscoveredDevice = devices.find(
       d => d.address === telemetry.device.address
@@ -247,7 +247,7 @@ const unixServer = net.createServer(socket => {
         telemetryData.voltage = telemetry.sensors.voltage;
       }
 
-      console.log('telemetryData', JSON.stringify(telemetryData));
+      //console.log('telemetryData', JSON.stringify(telemetryData));
 
       const msg = new Message(JSON.stringify(telemetryData));
 
@@ -280,7 +280,7 @@ setInterval(() => {
       return d.address + ': ' + d.status;
     })
   );
-}, 2000);
+}, 5000);
 
 const createUnixServer = () => {
   try {
